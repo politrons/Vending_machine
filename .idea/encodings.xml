@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/src/main/java/impl/ClientAction.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/impl/CoinType.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/impl/Item.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/impl/ItemType.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/impl/KitKat.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/impl/OutputMachine.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/impl/Pepsi.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/impl/Smint.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/impl/VendingMachine.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/impl/VendingMachineImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/impl/VendingMachineState.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/impl/exceptions/NoChangeAvailableException.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/impl/exceptions/NoEnoughMoneyException.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/impl/exceptions/NoProductAvailableException.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/VendingMachineTest.java" charset="UTF-8" />
+  </component>
+</project>

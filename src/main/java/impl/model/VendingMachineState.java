@@ -1,4 +1,4 @@
-package impl;
+package impl.model;
 
 /**
  * Created by pabloperezgarcia on 23/7/15.

@@ -3,14 +3,14 @@ package impl;
 import impl.exceptions.NoChangeAvailableException;
 import impl.exceptions.NoEnoughMoneyException;
 import impl.exceptions.NoProductAvailableException;
+import impl.model.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by pabloperezgarcia on 23/7/15.
@@ -29,7 +29,7 @@ public class VendingMachineImpl implements VendingMachine {
     @Setter
     private Smint smint;
 
-    private List<CoinType> insertedCoins = new ArrayList<>();
+    private Stack<CoinType> insertedCoins = new Stack<>();
 
     @Getter
     @Setter
@@ -76,19 +76,23 @@ public class VendingMachineImpl implements VendingMachine {
     }
 
     @Override
-    public void setOn() {
+    public OutputMachine setOn() {
         powerMachine = true;
         vendingMachineState = VendingMachineState.NO_COIN;
+        return new OutputMachine("welcome");
     }
 
     @Override
-    public void setOff() {
+    public OutputMachine setOff() {
         powerMachine = false;
         vendingMachineState = VendingMachineState.OFF;
+        return new OutputMachine("GoodBye");
+
     }
 
     /**
      * Main point access  where the user pick up one of the vending machine actions
+     *
      * @param clientAction
      * @return
      */
@@ -96,11 +100,9 @@ public class VendingMachineImpl implements VendingMachine {
     public OutputMachine processClientAction(ClientAction clientAction) {
         switch (clientAction) {
             case TUNR_ON:
-                setOn();
-                return new OutputMachine("welcome");
+                return setOn();
             case TURN_OFF:
-                setOff();
-                return new OutputMachine("GoodBye");
+                return setOff();
             case INSERT_MONEY:
                 return insertMoney(clientAction.getCoinType());
             case GET_ITEM:
@@ -114,10 +116,12 @@ public class VendingMachineImpl implements VendingMachine {
 
     /**
      * We iterate over the coins that the user introduce in the machine to restore the machine coins
+     *
      * @return
      */
     private OutputMachine returnClientMoney() {
-        for (CoinType insertedCoin : insertedCoins) {
+        while (insertedCoins.size() > 0) {
+            CoinType insertedCoin = insertedCoins.pop();
             switch (insertedCoin) {
                 case TEN_PENCE:
                     tenPence--;
@@ -139,6 +143,7 @@ public class VendingMachineImpl implements VendingMachine {
 
     /**
      * Access to increase the machine coins and client money on the machine
+     *
      * @param coinType
      * @return
      */
@@ -159,7 +164,7 @@ public class VendingMachineImpl implements VendingMachine {
             default:
                 return new OutputMachine("No coin accepted", coinType.getCoin());
         }
-        insertedCoins.add(coinType);
+        insertedCoins.push(coinType);
         clientMoney = clientMoney.add(coinType.getCoin(), MathContext.UNLIMITED);
         vendingMachineState = VendingMachineState.AVAILABLE_MONEY;
         return new OutputMachine(String.format("Inserted money %s", clientMoney));
@@ -167,7 +172,8 @@ public class VendingMachineImpl implements VendingMachine {
 
 
     /**
-     * Access to select a product and interact with the sate machine that the vending machine will go through in order to provide the product
+     * Access to select a product and interact with the sate machine that the vending machine will go through, in order to provide the product
+     *
      * @param outputMachine
      * @return
      */
@@ -200,6 +206,7 @@ public class VendingMachineImpl implements VendingMachine {
 
     /**
      * this method will calc if the client money is enough to pay the product and return the change if it is necessary
+     *
      * @param outputMachine
      * @throws NoChangeAvailableException
      * @throws NoEnoughMoneyException
@@ -228,38 +235,38 @@ public class VendingMachineImpl implements VendingMachine {
 
     /**
      * Here we calc the calc the amount of money that we need to reduce from the coins machine to give it to the client as change
+     *
      * @param clientMoney
      * @return
      * @throws NoChangeAvailableException
      */
     private BigDecimal getFractionChange(final BigDecimal clientMoney) throws NoChangeAvailableException {
         int numberOfCoins;
-        BigDecimal extractMoney;
-        if ((numberOfCoins = clientMoney.divide(CoinType.POUND.getCoin(), 2, BigDecimal.ROUND_HALF_UP).setScale(0, RoundingMode.DOWN).intValueExact()) >= 1 &&
-                pounds >= numberOfCoins) {
+        if ((numberOfCoins = getNumberOfCoins(clientMoney, CoinType.POUND)) >= 1 && pounds >= numberOfCoins) {
             pounds -= numberOfCoins;
-            extractMoney = new BigDecimal(numberOfCoins).multiply(CoinType.POUND.getCoin());
-        } else if ((numberOfCoins = clientMoney.divide(CoinType.FIFTY_POUND.getCoin(), 2, BigDecimal.ROUND_HALF_UP).setScale(0, RoundingMode.DOWN).intValueExact()) >= 1 &&
-                fiftyPence >= numberOfCoins) {
+            return new BigDecimal(numberOfCoins).multiply(CoinType.POUND.getCoin());
+        } else if ((numberOfCoins = getNumberOfCoins(clientMoney, CoinType.FIFTY_POUND)) >= 1 && fiftyPence >= numberOfCoins) {
             fiftyPence -= numberOfCoins;
-            extractMoney = new BigDecimal(numberOfCoins).multiply(CoinType.FIFTY_POUND.getCoin());
-        } else if ((numberOfCoins = clientMoney.divide(CoinType.TWENTY_POUND.getCoin(), 2, BigDecimal.ROUND_HALF_UP).setScale(0, RoundingMode.DOWN).intValueExact()) >= 1 &&
-                twentyPence >= numberOfCoins) {
+            return new BigDecimal(numberOfCoins).multiply(CoinType.FIFTY_POUND.getCoin());
+        } else if ((numberOfCoins = getNumberOfCoins(clientMoney, CoinType.TWENTY_POUND)) >= 1 && twentyPence >= numberOfCoins) {
             twentyPence -= numberOfCoins;
-            extractMoney = new BigDecimal(numberOfCoins).multiply(CoinType.TWENTY_POUND.getCoin());
-        } else if ((numberOfCoins = clientMoney.divide(CoinType.TEN_PENCE.getCoin(), 2, BigDecimal.ROUND_HALF_UP).setScale(0, RoundingMode.DOWN).intValueExact()) >= 1 &&
-                tenPence >= numberOfCoins) {
+            return new BigDecimal(numberOfCoins).multiply(CoinType.TWENTY_POUND.getCoin());
+        } else if ((numberOfCoins = getNumberOfCoins(clientMoney, CoinType.TEN_PENCE)) >= 1 && tenPence >= numberOfCoins) {
             tenPence -= numberOfCoins;
-            extractMoney = new BigDecimal(numberOfCoins).multiply(CoinType.TEN_PENCE.getCoin());
+            return new BigDecimal(numberOfCoins).multiply(CoinType.TEN_PENCE.getCoin());
         } else {
             throw new NoChangeAvailableException("No change for this product");
         }
-        return extractMoney;
+    }
+
+    private int getNumberOfCoins(final BigDecimal clientMoney, CoinType coinType) {
+        return clientMoney.divide(coinType.getCoin(), 2, BigDecimal.ROUND_HALF_UP).setScale(0, RoundingMode.DOWN).intValueExact();
     }
 
 
     /**
      * This method will check if it still stock of the item
+     *
      * @param outputMachine
      * @throws NoProductAvailableException
      */
@@ -278,18 +285,19 @@ public class VendingMachineImpl implements VendingMachine {
             case SMINT:
                 return smint;
             default:
-                throw new NoProductAvailableException("Error no product available");
+                throw new NoProductAvailableException("No product available");
         }
     }
 
     private void checkAvailableProduct(Item item) throws NoProductAvailableException {
         if (!item.isAvailable()) {
-            throw new NoProductAvailableException("Error no product available");
+            throw new NoProductAvailableException("No product available");
         }
     }
 
     /**
      * This method will set the product as selected by the user.
+     *
      * @param outputMachine
      * @throws NoProductAvailableException
      * @throws NoChangeAvailableException

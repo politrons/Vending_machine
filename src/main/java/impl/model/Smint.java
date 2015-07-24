@@ -1,28 +1,28 @@
-package impl;
+package impl.model;
 
 import java.math.BigDecimal;
 
 /**
  * Created by pabloperezgarcia on 23/7/15.
  */
-public class KitKat extends Item{
+public class Smint extends Item {
 
-    public KitKat() {
+    public Smint() {
         super();
     }
 
-    public KitKat(final Integer amount) {
+    public Smint(final Integer amount) {
         super(amount);
     }
 
     @Override
     public ItemType getItemType() {
-        return ItemType.KIKAT;
+        return ItemType.SMINT;
     }
 
     @Override
     public BigDecimal getPrice() {
-        return new BigDecimal("1.70");
+        return new BigDecimal("0.60");
     }
 
     @Override

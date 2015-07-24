@@ -2,8 +2,12 @@
 
 import impl.*;
 
+import impl.model.*;
 import org.junit.Test;
+
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import java.math.BigDecimal;
 
@@ -51,7 +55,8 @@ public class VendingMachineTest {
 
         clientAction = ClientAction.COIN_RETURN;
         outputMachine = machine.processClientAction(clientAction);
-        assertTrue(new BigDecimal("1.80").equals(outputMachine.getChange()));
+        assertThat(outputMachine.getChange(), is(new BigDecimal("1.80")));
+
     }
 
     @Test
@@ -94,7 +99,7 @@ public class VendingMachineTest {
         clientAction = ClientAction.GET_ITEM;
         clientAction.setItem(new Pepsi());
         OutputMachine outputMachine = machine.processClientAction(clientAction);
-        assertTrue(new BigDecimal("0.50").equals(outputMachine.getChange()));
+        assertThat(outputMachine.getChange(), is(new BigDecimal("0.50")));
         assertTrue(outputMachine.getItem().getSelected());
     }
 
@@ -110,7 +115,7 @@ public class VendingMachineTest {
         clientAction = ClientAction.GET_ITEM;
         clientAction.setItem(new KitKat());
         OutputMachine outputMachine = machine.processClientAction(clientAction);
-        assertTrue(new BigDecimal("0.30").equals(outputMachine.getChange()));
+        assertThat(outputMachine.getChange(), is(new BigDecimal("0.30")));
         assertTrue(outputMachine.getItem().getSelected());
     }
 
@@ -126,7 +131,7 @@ public class VendingMachineTest {
         clientAction = ClientAction.GET_ITEM;
         clientAction.setItem(new Smint());
         OutputMachine outputMachine = machine.processClientAction(clientAction);
-        assertTrue(new BigDecimal("1.40").equals(outputMachine.getChange()));
+        assertThat(outputMachine.getChange(), is(new BigDecimal("1.40")));
         assertTrue(outputMachine.getItem().getSelected());
     }
 
@@ -190,7 +195,7 @@ public class VendingMachineTest {
         clientAction = ClientAction.GET_ITEM;
         clientAction.setItem(new Pepsi());
         outputMachine = machine.processClientAction(clientAction);
-        assertTrue(new BigDecimal("0.0").equals(outputMachine.getChange()));
+        assertThat(outputMachine.getChange(), is(new BigDecimal("0.0")));
         assertTrue(outputMachine.getItem().getSelected());
     }
 
@@ -210,7 +215,7 @@ public class VendingMachineTest {
         clientAction = ClientAction.GET_ITEM;
         clientAction.setItem(new Pepsi());
         OutputMachine outputMachine = machine.processClientAction(clientAction);
-        assertTrue("Error no product available".equals(outputMachine.getScreenMessage()));
+        assertTrue("No product available".equals(outputMachine.getScreenMessage()));
         assertFalse(outputMachine.getItem().getSelected());
     }
 
@@ -239,7 +244,7 @@ public class VendingMachineTest {
         clientAction = ClientAction.GET_ITEM;
         clientAction.setItem(new KitKat());
         OutputMachine outputMachine = machine.processClientAction(clientAction);
-        assertTrue("Error no product available".equals(outputMachine.getScreenMessage()));
+        assertTrue("No product available".equals(outputMachine.getScreenMessage()));
         assertFalse(outputMachine.getItem().getSelected());
     }
 
@@ -264,7 +269,7 @@ public class VendingMachineTest {
         clientAction = ClientAction.GET_ITEM;
         clientAction.setItem(new Smint());
         OutputMachine outputMachine = machine.processClientAction(clientAction);
-        assertTrue("Error no product available".equals(outputMachine.getScreenMessage()));
+        assertTrue("No product available".equals(outputMachine.getScreenMessage()));
         assertFalse(outputMachine.getItem().getSelected());
     }
 
@@ -284,10 +289,10 @@ public class VendingMachineTest {
         clientAction = ClientAction.GET_ITEM;
         clientAction.setItem(new Pepsi());
         OutputMachine outputMachine = machine.processClientAction(clientAction);
-        assertTrue("Error no product available".equals(outputMachine.getScreenMessage()));
+        assertTrue("No product available".equals(outputMachine.getScreenMessage()));
         clientAction.setItem(new Smint());
         outputMachine = machine.processClientAction(clientAction);
-        assertTrue(new BigDecimal("0.40").equals(outputMachine.getChange()));
+        assertThat(outputMachine.getChange(), is(new BigDecimal("0.40")));
         assertTrue(outputMachine.getItem().getSelected());
     }
 

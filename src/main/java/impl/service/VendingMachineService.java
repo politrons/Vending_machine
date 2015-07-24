@@ -1,4 +1,4 @@
-package impl;
+package impl.service;
 
 import impl.model.ClientAction;
 import impl.model.OutputMachine;
@@ -6,7 +6,7 @@ import impl.model.OutputMachine;
 /**
  * Created by pabloperezgarcia on 24/7/15.
  */
-public interface VendingMachine {
+public interface VendingMachineService {
 
     boolean isOn();
 

@@ -1,8 +1,8 @@
 //TODO: I implement all this inside one of my Spring projects, you will need to change the package to make it works
 
-import impl.*;
-
 import impl.model.*;
+import impl.service.VendingMachineService;
+import impl.service.VendingMachineServiceImpl;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -21,7 +21,7 @@ public class VendingMachineTest {
 
     @Test
     public void wrongCoinType() {
-        VendingMachineImpl machine = new VendingMachineImpl();
+        VendingMachineService machine = new VendingMachineServiceImpl();
         machine.setOn();
         ClientAction clientAction = ClientAction.INSERT_MONEY;
         CoinType coinType = CoinType.OTHER;
@@ -34,7 +34,7 @@ public class VendingMachineTest {
 
     @Test
     public void insertCoinsReturnTotal() {
-        VendingMachineImpl machine = new VendingMachineImpl();
+        VendingMachineService machine = new VendingMachineServiceImpl();
         machine.setOn();
         ClientAction clientAction = ClientAction.INSERT_MONEY;
         clientAction.setCoinType(CoinType.POUND);
@@ -61,7 +61,7 @@ public class VendingMachineTest {
 
     @Test
     public void insertCoinsReturnTotalAndTryToBuyWithoutSuccess() {
-        VendingMachineImpl machine = new VendingMachineImpl();
+        VendingMachineService machine = new VendingMachineServiceImpl();
         machine.setOn();
         ClientAction clientAction = ClientAction.INSERT_MONEY;
         clientAction.setCoinType(CoinType.POUND);
@@ -89,7 +89,7 @@ public class VendingMachineTest {
 
     @Test
     public void buyPepsiWithChangeAndSuccess() {
-        VendingMachineImpl machine = new VendingMachineImpl();
+        VendingMachineService machine = new VendingMachineServiceImpl();
         machine.setOn();
         ClientAction clientAction = ClientAction.INSERT_MONEY;
         clientAction.setCoinType(CoinType.POUND);
@@ -105,7 +105,7 @@ public class VendingMachineTest {
 
     @Test
     public void buyKitKatWithChangeAndSuccess() {
-        VendingMachineImpl machine = new VendingMachineImpl();
+        VendingMachineService machine = new VendingMachineServiceImpl();
         machine.setOn();
         ClientAction clientAction = ClientAction.INSERT_MONEY;
         clientAction.setCoinType(CoinType.POUND);
@@ -121,7 +121,7 @@ public class VendingMachineTest {
 
     @Test
     public void buySmintWithChangeAndSuccess() {
-        VendingMachineImpl machine = new VendingMachineImpl();
+        VendingMachineService machine = new VendingMachineServiceImpl();
         machine.setOn();
         ClientAction clientAction = ClientAction.INSERT_MONEY;
         clientAction.setCoinType(CoinType.POUND);
@@ -137,7 +137,7 @@ public class VendingMachineTest {
 
     @Test
     public void buyPepsiWithoutEnoughMoney() {
-        VendingMachineImpl machine = new VendingMachineImpl();
+        VendingMachineService machine = new VendingMachineServiceImpl();
         machine.setOn();
         ClientAction clientAction = ClientAction.INSERT_MONEY;
         clientAction.setCoinType(CoinType.FIFTY_POUND);
@@ -150,7 +150,7 @@ public class VendingMachineTest {
 
     @Test
     public void buyKitKatWithoutEnoughMoney() {
-        VendingMachineImpl machine = new VendingMachineImpl();
+        VendingMachineService machine = new VendingMachineServiceImpl();
         machine.setOn();
         ClientAction clientAction = ClientAction.INSERT_MONEY;
         clientAction.setCoinType(CoinType.POUND);
@@ -166,7 +166,7 @@ public class VendingMachineTest {
 
     @Test
     public void buySmintiWithoutEnoughMoney() {
-        VendingMachineImpl machine = new VendingMachineImpl();
+        VendingMachineService machine = new VendingMachineServiceImpl();
         machine.setOn();
         ClientAction clientAction = ClientAction.INSERT_MONEY;
         clientAction.setCoinType(CoinType.FIFTY_POUND);
@@ -179,7 +179,7 @@ public class VendingMachineTest {
 
     @Test
     public void buyPepsiWithoutEnoughMoneyPutMoreMoneyAndGetPepsi() {
-        VendingMachineImpl machine = new VendingMachineImpl();
+        VendingMachineService machine = new VendingMachineServiceImpl();
         machine.setOn();
         ClientAction clientAction = ClientAction.INSERT_MONEY;
         clientAction.setCoinType(CoinType.FIFTY_POUND);
@@ -201,7 +201,7 @@ public class VendingMachineTest {
 
     @Test
     public void buyPepsiAndReturnNotPepsiAvailable() {
-        VendingMachineImpl machine = new VendingMachineImpl();
+        VendingMachineService machine = new VendingMachineServiceImpl();
         machine.setOn();
         ClientAction clientAction = ClientAction.INSERT_MONEY;
         clientAction.setCoinType(CoinType.POUND);
@@ -221,7 +221,7 @@ public class VendingMachineTest {
 
     @Test
     public void buyKitKatAndReturnNotKitKatAvailable() {
-        VendingMachineImpl machine = new VendingMachineImpl();
+        VendingMachineService machine = new VendingMachineServiceImpl();
         machine.setOn();
         ClientAction clientAction = ClientAction.INSERT_MONEY;
         clientAction.setCoinType(CoinType.POUND);
@@ -250,7 +250,7 @@ public class VendingMachineTest {
 
     @Test
     public void buySmintAndReturnNotSmintAvailable() {
-        VendingMachineImpl machine = new VendingMachineImpl();
+        VendingMachineService machine = new VendingMachineServiceImpl();
         machine.setOn();
         ClientAction clientAction = ClientAction.INSERT_MONEY;
         clientAction.setCoinType(CoinType.FIFTY_POUND);
@@ -275,7 +275,7 @@ public class VendingMachineTest {
 
     @Test
     public void buyPepsiAndReturnNotPepsiAvailableSoBuySmint() {
-        VendingMachineImpl machine = new VendingMachineImpl();
+        VendingMachineService machine = new VendingMachineServiceImpl();
         machine.setOn();
         ClientAction clientAction = ClientAction.INSERT_MONEY;
         clientAction.setCoinType(CoinType.POUND);
@@ -298,13 +298,13 @@ public class VendingMachineTest {
 
     @Test
     public void defaultStateIsOff() {
-        VendingMachineImpl machine = new VendingMachineImpl();
+        VendingMachineService machine = new VendingMachineServiceImpl();
         assertFalse(machine.isOn());
     }
 
     @Test
     public void turnsOn() {
-        VendingMachineImpl machine = new VendingMachineImpl();
+        VendingMachineService machine = new VendingMachineServiceImpl();
         machine.setOn();
         assertTrue(machine.isOn());
     }

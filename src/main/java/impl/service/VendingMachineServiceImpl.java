@@ -186,7 +186,7 @@ public class VendingMachineServiceImpl implements VendingMachineService {
     }
 
     /**
-     * Here we calc the calc the amount of money that we need to reduce from the coins machine to give it to the client as change
+     * Here we calc the fraction of money that we need to reduce from the coins machine to give it to the client as change
      *
      * @param clientMoney
      * @return

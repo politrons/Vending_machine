@@ -85,6 +85,11 @@ public class VendingMachineImpl implements VendingMachine {
         vendingMachineState = VendingMachineState.OFF;
     }
 
+    /**
+     * Main point access  where the user pick up one of the vending machine actions
+     * @param clientAction
+     * @return
+     */
     @Override
     public OutputMachine processClientAction(ClientAction clientAction) {
         switch (clientAction) {
@@ -105,6 +110,10 @@ public class VendingMachineImpl implements VendingMachine {
         }
     }
 
+    /**
+     * We iterate over the coins that the user introduce in the machine to restore the machine coins
+     * @return
+     */
     private OutputMachine returnClientMoney() {
         for (CoinType insertedCoin : insertedCoins) {
             switch (insertedCoin) {
@@ -126,6 +135,11 @@ public class VendingMachineImpl implements VendingMachine {
         return new OutputMachine(clientMoney);
     }
 
+    /**
+     * Access to increase the machine coins and client money on the machine
+     * @param coinType
+     * @return
+     */
     private OutputMachine insertMoney(CoinType coinType) {
         switch (coinType) {
             case TEN_PENCE:
@@ -150,6 +164,11 @@ public class VendingMachineImpl implements VendingMachine {
     }
 
 
+    /**
+     * Access to select a product and interact with the sate machine that the vending machine will go through in order to provide the product
+     * @param outputMachine
+     * @return
+     */
     private OutputMachine selectProduct(OutputMachine outputMachine) {
         try {
             switch (vendingMachineState) {
@@ -177,6 +196,12 @@ public class VendingMachineImpl implements VendingMachine {
     }
 
 
+    /**
+     * this method will calc if the client money is enough to pay the product and return the change if it is necessary
+     * @param outputMachine
+     * @throws NoChangeAvailableException
+     * @throws NoEnoughMoneyException
+     */
     private void processMoney(OutputMachine outputMachine) throws NoChangeAvailableException, NoEnoughMoneyException {
         if (clientMoney.compareTo(outputMachine.getItem().getPrice()) >= 0) {
             loadClientChange(outputMachine);
@@ -193,13 +218,19 @@ public class VendingMachineImpl implements VendingMachine {
     }
 
     private BigDecimal getClientChange() throws NoChangeAvailableException {
-        BigDecimal extractMoney = getExtractMoney(clientMoney);
-        clientMoney = clientMoney.subtract(extractMoney);
-        clientChange = clientChange.add(extractMoney);
+        BigDecimal fractionChange = getFractionChange(clientMoney);
+        clientMoney = clientMoney.subtract(fractionChange);
+        clientChange = clientChange.add(fractionChange);
         return clientMoney.compareTo(new BigDecimal("0")) == 0 ? clientChange : getClientChange();
     }
 
-    private BigDecimal getExtractMoney(final BigDecimal clientMoney) throws NoChangeAvailableException {
+    /**
+     * Here we calc the calc the amount of money that we need to reduce from the coins machine to give it to the client as change
+     * @param clientMoney
+     * @return
+     * @throws NoChangeAvailableException
+     */
+    private BigDecimal getFractionChange(final BigDecimal clientMoney) throws NoChangeAvailableException {
         int numberOfCoins;
         BigDecimal extractMoney;
         if ((numberOfCoins = clientMoney.divide(CoinType.POUND.getCoin(), 2, BigDecimal.ROUND_HALF_UP).setScale(0, RoundingMode.DOWN).intValueExact()) >= 1 &&
@@ -225,6 +256,11 @@ public class VendingMachineImpl implements VendingMachine {
     }
 
 
+    /**
+     * This method will check if it still stock of the item
+     * @param outputMachine
+     * @throws NoProductAvailableException
+     */
     private void processAvailableProduct(OutputMachine outputMachine) throws NoProductAvailableException {
         checkAvailableProduct(getItem(outputMachine));
         vendingMachineState = VendingMachineState.INSERTED_MONEY;
@@ -250,6 +286,12 @@ public class VendingMachineImpl implements VendingMachine {
         }
     }
 
+    /**
+     * This method will set the product as selected by the user.
+     * @param outputMachine
+     * @throws NoProductAvailableException
+     * @throws NoChangeAvailableException
+     */
     private void processSelectedProduct(final OutputMachine outputMachine) throws NoProductAvailableException, NoChangeAvailableException {
         outputMachine.getItem().setSelected(true);
         reduceItemAmount(getItem(outputMachine));

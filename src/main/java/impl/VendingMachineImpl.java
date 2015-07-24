@@ -61,8 +61,10 @@ public class VendingMachineImpl implements VendingMachine {
     @Setter
     private VendingMachineState vendingMachineState = VendingMachineState.NO_COIN;
 
+    /**
+     * Init items and money when the machine was provide
+     */
     public VendingMachineImpl() {
-        //Init items and money when the machine was provide
         this.pepsi = new Pepsi(1);
         this.kitkat = new KitKat(1);
         this.smint = new Smint(1);

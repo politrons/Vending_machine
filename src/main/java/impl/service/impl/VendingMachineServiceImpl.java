@@ -9,7 +9,6 @@ import impl.service.VendingMachineService;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
-import java.util.Optional;
 
 /**
  * Created by pabloperezgarcia on 23/7/15.
@@ -172,7 +171,7 @@ public class VendingMachineServiceImpl implements VendingMachineService {
         switch (outputMachine.getItem().getItemType()) {
             case PEPSI:
                 return vendingMachine.getPepsi();
-            case KIKAT:
+            case KIT_KAT:
                 return vendingMachine.getKitkat();
             case SMINT:
                 return vendingMachine.getSmint();

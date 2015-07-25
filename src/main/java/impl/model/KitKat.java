@@ -17,7 +17,7 @@ public class KitKat extends Item{
 
     @Override
     public ItemType getItemType() {
-        return ItemType.KIKAT;
+        return ItemType.KIT_KAT;
     }
 
     @Override

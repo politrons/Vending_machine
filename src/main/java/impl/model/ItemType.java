@@ -5,6 +5,6 @@ package impl.model;
  */
 public enum ItemType {
     PEPSI,
-    KIKAT,
+    KIT_KAT,
     SMINT
 }

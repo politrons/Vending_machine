@@ -24,10 +24,8 @@ public enum ClientAction {
         public Item getItem() {
             return item;
         }
-    },
-    TUNR_ON,
-    TURN_OFF;
-
+    };
+    
     @Getter
     @Setter
     private static CoinType coinType;

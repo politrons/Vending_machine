@@ -8,6 +8,7 @@ import impl.model.*;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.Optional;
 
 /**
  * Created by pabloperezgarcia on 23/7/15.
@@ -61,34 +62,6 @@ public class VendingMachineServiceImpl implements VendingMachineService {
     }
 
     /**
-     * We iterate over the coins that the user introduce in the machine to restore the machine coins
-     *
-     * @return
-     */
-    private OutputMachine returnMoney() {
-        vendingMachine.clientMoney = getTotalClientMoney();
-        while (vendingMachine.getInsertedCoins().size() > 0) {
-            CoinType insertedCoin = vendingMachine.getInsertedCoins().pop();
-            switch (insertedCoin) {
-                case TEN_PENCE:
-                    vendingMachine.tenPence--;
-                    break;
-                case TWENTY_POUND:
-                    vendingMachine.twentyPence--;
-                    break;
-                case FIFTY_POUND:
-                    vendingMachine.fiftyPence--;
-                    break;
-                case POUND:
-                    vendingMachine.pounds--;
-                    break;
-            }
-        }
-        vendingMachine.setVendingMachineState(VendingMachineState.NO_COIN);
-        return new OutputMachine(vendingMachine.clientMoney);
-    }
-
-    /**
      * Access to increase the machine coins and client money on the machine
      *
      * @param coinType
@@ -116,6 +89,33 @@ public class VendingMachineServiceImpl implements VendingMachineService {
         return new OutputMachine(String.format("Inserted money %s", getTotalClientMoney()));
     }
 
+    /**
+     * We iterate over the coins that the user introduce in the machine to restore the machine coins
+     *
+     * @return
+     */
+    private OutputMachine returnMoney() {
+        vendingMachine.clientMoney = getTotalClientMoney();
+        while (vendingMachine.getInsertedCoins().size() > 0) {
+            CoinType insertedCoin = vendingMachine.getInsertedCoins().pop();
+            switch (insertedCoin) {
+                case TEN_PENCE:
+                    vendingMachine.tenPence--;
+                    break;
+                case TWENTY_POUND:
+                    vendingMachine.twentyPence--;
+                    break;
+                case FIFTY_POUND:
+                    vendingMachine.fiftyPence--;
+                    break;
+                case POUND:
+                    vendingMachine.pounds--;
+                    break;
+            }
+        }
+        vendingMachine.setVendingMachineState(VendingMachineState.NO_COIN);
+        return new OutputMachine(vendingMachine.clientMoney);
+    }
 
     /**
      * Access to select a product and interact with the sate machine that the vending machine will go through, in order to provide the product
@@ -149,6 +149,36 @@ public class VendingMachineServiceImpl implements VendingMachineService {
         return outputMachine;
     }
 
+    /**
+     * This method will check if it still stock of the item
+     *
+     * @param outputMachine
+     * @throws NoProductAvailableException
+     */
+    private void processAvailableProduct(OutputMachine outputMachine) throws NoProductAvailableException {
+        checkAvailableProduct(getItem(outputMachine));
+        vendingMachine.setVendingMachineState(VendingMachineState.INSERTED_MONEY);
+        selectProduct(outputMachine);
+    }
+
+    private Item getItem(final OutputMachine outputMachine) throws NoProductAvailableException {
+        switch (outputMachine.getItem().getItemType()) {
+            case PEPSI:
+                return vendingMachine.getPepsi();
+            case KIKAT:
+                return vendingMachine.getKitkat();
+            case SMINT:
+                return vendingMachine.getSmint();
+            default:
+                throw new NoProductAvailableException("No product available");
+        }
+    }
+
+    private void checkAvailableProduct(Item item) throws NoProductAvailableException {
+        if (!item.isAvailable()) {
+            throw new NoProductAvailableException("No product available");
+        }
+    }
 
     /**
      * this method will calc if the client money is enough to pay the product and return the change if it is necessary
@@ -177,6 +207,11 @@ public class VendingMachineServiceImpl implements VendingMachineService {
         outputMachine.setChange(vendingMachine.clientMoney.compareTo(new BigDecimal("0.0")) == 0 ? new BigDecimal("0.0") : getClientChange());
     }
 
+    /**
+     * Recursive method to extract the client change
+     * @return
+     * @throws NoChangeAvailableException
+     */
     private BigDecimal getClientChange() throws NoChangeAvailableException {
         BigDecimal fractionChange = getFractionChange(vendingMachine.clientMoney);
         vendingMachine.clientMoney = vendingMachine.clientMoney.subtract(fractionChange);
@@ -214,40 +249,8 @@ public class VendingMachineServiceImpl implements VendingMachineService {
         return clientMoney.divide(coinType.getCoin(), 2, BigDecimal.ROUND_HALF_UP).setScale(0, RoundingMode.DOWN).intValueExact();
     }
 
-
     /**
-     * This method will check if it still stock of the item
-     *
-     * @param outputMachine
-     * @throws NoProductAvailableException
-     */
-    private void processAvailableProduct(OutputMachine outputMachine) throws NoProductAvailableException {
-        checkAvailableProduct(getItem(outputMachine));
-        vendingMachine.setVendingMachineState(VendingMachineState.INSERTED_MONEY);
-        selectProduct(outputMachine);
-    }
-
-    private Item getItem(final OutputMachine outputMachine) throws NoProductAvailableException {
-        switch (outputMachine.getItem().getItemType()) {
-            case PEPSI:
-                return vendingMachine.getPepsi();
-            case KIKAT:
-                return vendingMachine.getKitkat();
-            case SMINT:
-                return vendingMachine.getSmint();
-            default:
-                throw new NoProductAvailableException("No product available");
-        }
-    }
-
-    private void checkAvailableProduct(Item item) throws NoProductAvailableException {
-        if (!item.isAvailable()) {
-            throw new NoProductAvailableException("No product available");
-        }
-    }
-
-    /**
-     * This method will set the product as selected by the user.
+     * This method will set the product as selected by the user, and it will reduce the item amount
      *
      * @param outputMachine
      * @throws NoProductAvailableException
@@ -260,6 +263,9 @@ public class VendingMachineServiceImpl implements VendingMachineService {
         selectProduct(outputMachine);
     }
 
+    /**
+     * This method will set the state machine as no coin, and it will clear the client coin stack
+     */
     private void resetVendingStateMachine() {
         vendingMachine.getInsertedCoins().clear();
         vendingMachine.setVendingMachineState(VendingMachineState.NO_COIN);

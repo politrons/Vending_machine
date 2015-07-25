@@ -10,9 +10,9 @@ public interface VendingMachineService {
 
     boolean isOn();
 
-    OutputMachine setOn();
+    void setOn();
 
-    OutputMachine setOff();
+    void setOff();
 
     OutputMachine processClientAction(ClientAction clientAction);
 }

@@ -8,6 +8,10 @@ import impl.model.*;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by pabloperezgarcia on 23/7/15.
@@ -29,17 +33,15 @@ public class VendingMachineServiceImpl implements VendingMachineService {
     }
 
     @Override
-    public OutputMachine setOn() {
+    public void setOn() {
         vendingMachine.setPowerMachine(true);
         vendingMachine.setVendingMachineState(VendingMachineState.NO_COIN);
-        return new OutputMachine("welcome");
     }
 
     @Override
-    public OutputMachine setOff() {
+    public void setOff() {
         vendingMachine.setPowerMachine(false);
         vendingMachine.setVendingMachineState(VendingMachineState.OFF);
-        return new OutputMachine("GoodBye");
     }
 
     /**
@@ -51,10 +53,6 @@ public class VendingMachineServiceImpl implements VendingMachineService {
     @Override
     public OutputMachine processClientAction(ClientAction clientAction) {
         switch (clientAction) {
-            case TUNR_ON:
-                return setOn();
-            case TURN_OFF:
-                return setOff();
             case INSERT_MONEY:
                 return insertMoney(clientAction.getCoinType());
             case GET_ITEM:
@@ -262,6 +260,7 @@ public class VendingMachineServiceImpl implements VendingMachineService {
     }
 
     private void resetVendingStateMachine() {
+        vendingMachine.getInsertedCoins().clear();
         vendingMachine.setVendingMachineState(VendingMachineState.NO_COIN);
     }
 

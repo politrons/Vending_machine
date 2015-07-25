@@ -2,7 +2,7 @@
 
 import impl.model.*;
 import impl.service.VendingMachineService;
-import impl.service.VendingMachineServiceImpl;
+import impl.service.impl.VendingMachineServiceImpl;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

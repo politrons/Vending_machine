@@ -1,9 +1,10 @@
-package impl.service;
+package impl.service.impl;
 
 import impl.exceptions.NoChangeAvailableException;
 import impl.exceptions.NoEnoughMoneyException;
 import impl.exceptions.NoProductAvailableException;
 import impl.model.*;
+import impl.service.VendingMachineService;
 
 import java.math.BigDecimal;
 import java.math.MathContext;

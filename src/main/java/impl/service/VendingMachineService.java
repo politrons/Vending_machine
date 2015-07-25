@@ -2,6 +2,7 @@ package impl.service;
 
 import impl.model.ClientAction;
 import impl.model.OutputMachine;
+import impl.model.VendingMachine;
 
 /**
  * Created by pabloperezgarcia on 24/7/15.
@@ -9,6 +10,10 @@ import impl.model.OutputMachine;
 public interface VendingMachineService {
 
     boolean isOn();
+
+    default String version() {
+        return VendingMachine.version;
+    }
 
     void setOn();
 

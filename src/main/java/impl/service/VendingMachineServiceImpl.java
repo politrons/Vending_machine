@@ -51,10 +51,10 @@ public class VendingMachineServiceImpl implements VendingMachineService {
         switch (clientAction) {
             case INSERT_MONEY:
                 return insertMoney(clientAction.getCoinType());
+            case COIN_RETURN:
+                return returnMoney();
             case GET_ITEM:
                 return selectProduct(new OutputMachine(clientAction.getItem()));
-            case COIN_RETURN:
-                return returnClientMoney();
             default:
                 return new OutputMachine("Action not available");
         }
@@ -65,7 +65,7 @@ public class VendingMachineServiceImpl implements VendingMachineService {
      *
      * @return
      */
-    private OutputMachine returnClientMoney() {
+    private OutputMachine returnMoney() {
         vendingMachine.clientMoney = getTotalClientMoney();
         while (vendingMachine.getInsertedCoins().size() > 0) {
             CoinType insertedCoin = vendingMachine.getInsertedCoins().pop();

@@ -309,5 +309,18 @@ public class VendingMachineTest {
         assertTrue(machine.isOn());
     }
 
+    @Test
+    public void turnsOff() {
+        VendingMachineService machine = new VendingMachineServiceImpl();
+        machine.setOff();
+        assertFalse(machine.isOn());
+    }
+
+    @Test
+    public void getVersion() {
+        VendingMachineService machine = new VendingMachineServiceImpl();
+        assertTrue("1.0 Pablo Perez".equals(machine.version()));
+    }
+
 
 }

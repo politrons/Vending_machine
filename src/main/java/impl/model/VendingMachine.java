@@ -11,6 +11,8 @@ import java.util.Stack;
  */
 public class VendingMachine {
 
+    public static String version="1.0 Pablo Perez";
+    
     @Getter
     @Setter
     private Pepsi pepsi;

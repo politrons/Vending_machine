@@ -8,10 +8,6 @@ import impl.model.*;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Stack;
 
 /**
  * Created by pabloperezgarcia on 23/7/15.
@@ -70,6 +66,7 @@ public class VendingMachineServiceImpl implements VendingMachineService {
      * @return
      */
     private OutputMachine returnClientMoney() {
+        vendingMachine.clientMoney = getTotalClientMoney();
         while (vendingMachine.getInsertedCoins().size() > 0) {
             CoinType insertedCoin = vendingMachine.getInsertedCoins().pop();
             switch (insertedCoin) {
@@ -115,9 +112,8 @@ public class VendingMachineServiceImpl implements VendingMachineService {
                 return new OutputMachine("No coin accepted", coinType.getCoin());
         }
         vendingMachine.getInsertedCoins().push(coinType);
-        vendingMachine.clientMoney = vendingMachine.clientMoney.add(coinType.getCoin(), MathContext.UNLIMITED);
         vendingMachine.setVendingMachineState(VendingMachineState.AVAILABLE_MONEY);
-        return new OutputMachine(String.format("Inserted money %s", vendingMachine.clientMoney));
+        return new OutputMachine(String.format("Inserted money %s", getTotalClientMoney()));
     }
 
 
@@ -162,6 +158,7 @@ public class VendingMachineServiceImpl implements VendingMachineService {
      * @throws NoEnoughMoneyException
      */
     private void processMoney(OutputMachine outputMachine) throws NoChangeAvailableException, NoEnoughMoneyException {
+        vendingMachine.clientMoney = getTotalClientMoney();
         if (vendingMachine.clientMoney.compareTo(outputMachine.getItem().getPrice()) >= 0) {
             loadClientChange(outputMachine);
             vendingMachine.setVendingMachineState(VendingMachineState.AVAILABLE_ITEMS);
@@ -169,6 +166,10 @@ public class VendingMachineServiceImpl implements VendingMachineService {
         } else {
             throw new NoEnoughMoneyException(String.format("No enough money %s", outputMachine.getItem().getPrice()));
         }
+    }
+
+    private BigDecimal getTotalClientMoney() {
+        return vendingMachine.getInsertedCoins().stream().map(CoinType::getCoin).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     private void loadClientChange(OutputMachine outputMachine) throws NoChangeAvailableException {

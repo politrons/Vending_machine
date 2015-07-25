@@ -2,38 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9de96518-7867-4ed6-8ba3-a7139d6318ae" name="Default" comment="Vending_machine practice">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_12_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/ClientAction$1.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/ClientAction$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/ClientAction$2.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/ClientAction$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/ClientAction$3.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/ClientAction$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/ClientAction.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/ClientAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/CoinType$1.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/CoinType$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/CoinType$2.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/CoinType$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/CoinType$3.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/CoinType$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/CoinType$4.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/CoinType$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/CoinType$5.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/CoinType$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/CoinType.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/CoinType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/Item.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/Item.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/ItemType.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/ItemType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/KitKat.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/KitKat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/exceptions/NoChangeAvailableException.class" afterPath="$PROJECT_DIR$/target/classes/impl/exceptions/NoChangeAvailableException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/exceptions/NoEnoughMoneyException.class" afterPath="$PROJECT_DIR$/target/classes/impl/exceptions/NoEnoughMoneyException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/exceptions/NoProductAvailableException.class" afterPath="$PROJECT_DIR$/target/classes/impl/exceptions/NoProductAvailableException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/OutputMachine.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/OutputMachine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/Pepsi.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/Pepsi.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/Smint.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/Smint.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/impl/service/VendingMachineServiceImpl$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/impl/service/VendingMachineServiceImpl.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/VendingMachine.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/VendingMachine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/service/VendingMachineService.class" afterPath="$PROJECT_DIR$/target/classes/impl/service/VendingMachineService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/service/VendingMachineServiceImpl$1.class" afterPath="$PROJECT_DIR$/target/classes/impl/service/VendingMachineServiceImpl$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/service/VendingMachineServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/impl/service/VendingMachineServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/impl/model/VendingMachineState.class" afterPath="$PROJECT_DIR$/target/classes/impl/model/VendingMachineState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/VendingMachineTest.class" afterPath="$PROJECT_DIR$/target/test-classes/VendingMachineTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/MANIFEST.MF" afterPath="$PROJECT_DIR$/target/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/impl/service/VendingMachineService.java" afterPath="$PROJECT_DIR$/src/main/java/impl/service/VendingMachineService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/impl/service/VendingMachineServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/impl/service/VendingMachineServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Vending_machine.iml" afterPath="$PROJECT_DIR$/Vending_machine.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Vending_machine.iws" />
@@ -61,16 +33,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="OutputMachine.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/impl/model/OutputMachine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="570">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Item.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/impl/model/Item.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -84,8 +46,8 @@
       <file leaf-file-name="VendingMachineTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/VendingMachineTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3102" max-vertical-offset="4650">
-              <caret line="228" column="0" selection-start-line="228" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="297" max-vertical-offset="4650">
+              <caret line="40" column="55" selection-start-line="40" selection-start-column="55" selection-end-line="40" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -94,18 +56,8 @@
       <file leaf-file-name="VendingMachineService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/impl/service/VendingMachineService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="345">
-              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Pepsi.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/impl/model/Pepsi.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="405">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+              <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -114,12 +66,23 @@
       <file leaf-file-name="VendingMachineServiceImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/impl/service/VendingMachineServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60777956" vertical-offset="1875" max-vertical-offset="3960">
-              <caret line="163" column="118" selection-start-line="163" selection-start-column="118" selection-end-line="163" selection-end-column="118" />
+            <state vertical-scroll-proportion="0.14025696" vertical-offset="2389" max-vertical-offset="4140">
+              <caret line="170" column="46" selection-start-line="170" selection-start-column="46" selection-end-line="170" selection-end-column="46" />
               <folding>
-                <element signature="e#766#767#0" expanded="true" />
-                <element signature="e#821#822#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#664#665#0" expanded="true" />
+                <element signature="e#719#720#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BiFunction.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/src.zip!/java/util/function/BiFunction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="208" max-vertical-offset="825">
+              <caret line="52" column="6" selection-start-line="52" selection-start-column="6" selection-end-line="52" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -147,7 +110,7 @@
       <file leaf-file-name="VendingMachine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/impl/model/VendingMachine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="990">
+            <state vertical-scroll-proportion="0.0" vertical-offset="56" max-vertical-offset="990">
               <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -156,11 +119,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MathContext.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/src.zip!/java/math/MathContext.java">
+      <file leaf-file-name="CoinType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/impl/model/CoinType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="439" max-vertical-offset="4485">
-              <caret line="77" column="47" selection-start-line="77" selection-start-column="47" selection-end-line="77" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+              <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
+              <folding>
+                <element signature="e#907#908#0" expanded="true" />
+                <element signature="e#934#935#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Setter.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.12.2/lombok-1.12.2.jar!/lombok/Setter.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.8" vertical-offset="0" max-vertical-offset="420">
+              <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -713,7 +689,7 @@
       <workItem from="1437755421270" duration="3040000" />
       <workItem from="1437758906613" duration="251000" />
       <workItem from="1437764168403" duration="4477000" />
-      <workItem from="1437801935696" duration="495000" />
+      <workItem from="1437801935696" duration="1667000" />
     </task>
     <task id="LOCAL-00001" summary="Vending_machine practice">
       <created>1437758997044</created>
@@ -725,7 +701,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8263000" />
+    <option name="totallyTimeSpent" value="9435000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="40" y="23" width="1879" height="1057" extended-state="6" />
@@ -754,7 +730,7 @@
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2580294" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32952183" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952183" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -782,9 +758,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <option name="time" value="19" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="vendingMachine.getInsertedCoins()" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -836,8 +816,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="3930">
           <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
           <folding>
-            <element signature="e#766#767#0" expanded="true" />
-            <element signature="e#821#822#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#664#665#0" expanded="true" />
+            <element signature="e#719#720#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -923,7 +904,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="675">
           <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
-          <folding />
+          <folding>
+            <element signature="e#907#908#0" expanded="true" />
+            <element signature="e#934#935#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -966,8 +950,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4050">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#766#767#0" expanded="true" />
-            <element signature="e#821#822#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#664#665#0" expanded="true" />
+            <element signature="e#719#720#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1019,7 +1004,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="675">
           <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
-          <folding />
+          <folding>
+            <element signature="e#907#908#0" expanded="true" />
+            <element signature="e#934#935#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1062,8 +1050,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="3176" max-vertical-offset="4110">
           <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
           <folding>
-            <element signature="e#766#767#0" expanded="true" />
-            <element signature="e#821#822#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#664#665#0" expanded="true" />
+            <element signature="e#719#720#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1102,14 +1091,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
           <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/impl/model/CoinType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
-          <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -1182,14 +1163,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/impl/service/VendingMachineService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
@@ -1206,9 +1179,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/src.zip!/java/util/function/BiFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="208" max-vertical-offset="825">
+          <caret line="52" column="6" selection-start-line="52" selection-start-column="6" selection-end-line="52" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.12.2/lombok-1.12.2.jar!/lombok/Setter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.8" vertical-offset="0" max-vertical-offset="420">
+          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/impl/model/VendingMachine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="990">
+        <state vertical-scroll-proportion="0.0" vertical-offset="56" max-vertical-offset="990">
           <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1216,21 +1205,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/impl/model/CoinType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+          <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
+          <folding>
+            <element signature="e#907#908#0" expanded="true" />
+            <element signature="e#934#935#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/VendingMachineTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3102" max-vertical-offset="4650">
-          <caret line="228" column="0" selection-start-line="228" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="297" max-vertical-offset="4650">
+          <caret line="40" column="55" selection-start-line="40" selection-start-column="55" selection-end-line="40" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/impl/service/VendingMachineService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/impl/service/VendingMachineServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60777956" vertical-offset="1875" max-vertical-offset="3960">
-          <caret line="163" column="118" selection-start-line="163" selection-start-column="118" selection-end-line="163" selection-end-column="118" />
+        <state vertical-scroll-proportion="0.14025696" vertical-offset="2389" max-vertical-offset="4140">
+          <caret line="170" column="46" selection-start-line="170" selection-start-column="46" selection-end-line="170" selection-end-column="46" />
           <folding>
-            <element signature="e#766#767#0" expanded="true" />
-            <element signature="e#821#822#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#664#665#0" expanded="true" />
+            <element signature="e#719#720#0" expanded="true" />
           </folding>
         </state>
       </provider>

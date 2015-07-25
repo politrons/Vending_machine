@@ -161,6 +161,12 @@ public class VendingMachineServiceImpl implements VendingMachineService {
         selectProduct(outputMachine);
     }
 
+    /**
+     * Return the item type that the client selected
+     * @param outputMachine
+     * @return
+     * @throws NoProductAvailableException
+     */
     private Item getItem(final OutputMachine outputMachine) throws NoProductAvailableException {
         switch (outputMachine.getItem().getItemType()) {
             case PEPSI:

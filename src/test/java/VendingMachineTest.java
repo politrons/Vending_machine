@@ -176,9 +176,8 @@ public class VendingMachineTest {
         machine.insertMoney(CoinType.POUND);
         machine.selectProduct(new Pepsi());
         machine.insertMoney(CoinType.POUND);
-        OutputMachine outputMachine = machine.selectProduct(new Pepsi());
-        assertTrue("No product available".equals(outputMachine.getScreenMessage()));
-        outputMachine = machine.selectProduct(new Smint());
+        machine.selectProduct(new Pepsi());
+        OutputMachine outputMachine = machine.selectProduct(new Smint());
         assertThat(outputMachine.getChange(), is(new BigDecimal("0.40")));
         assertTrue(outputMachine.getItem().getSelected());
     }

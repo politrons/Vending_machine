@@ -16,13 +16,13 @@ public enum CoinType {
             return new BigDecimal("0.10");
         }
     },
-    TWENTY_POUND {
+    TWENTY_PENCE {
         @Override
         public BigDecimal getCoin() {
             return new BigDecimal("0.20");
         }
     },
-    FIFTY_POUND {
+    FIFTY_PENCE {
         @Override
         public BigDecimal getCoin() {
             return new BigDecimal("0.50");

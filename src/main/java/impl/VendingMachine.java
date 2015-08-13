@@ -4,8 +4,6 @@ import impl.exceptions.NoChangeAvailableException;
 import impl.exceptions.NoEnoughMoneyException;
 import impl.exceptions.NoProductAvailableException;
 import impl.model.*;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -17,52 +15,28 @@ import java.util.Stack;
  */
 public class VendingMachine {
 
-    @Getter
-    @Setter
     private Pepsi pepsi;
 
-    @Getter
-    @Setter
     private KitKat kitkat;
 
-    @Getter
-    @Setter
     private Smint smint;
 
-    @Getter
-    @Setter
     private Stack<CoinType> insertedCoins = new Stack<>();
 
-    @Getter
-    @Setter
-    public BigDecimal clientMoney = new BigDecimal("0.0");
+    private BigDecimal clientMoney = new BigDecimal("0.0");
 
-    @Getter
-    @Setter
-    public BigDecimal clientChange = new BigDecimal("0.0");
+    private BigDecimal clientChange = new BigDecimal("0.0");
 
-    @Getter
-    @Setter
-    public Integer tenPence = 3;
+    private Integer tenPence = 3;
 
-    @Getter
-    @Setter
-    public Integer twentyPence = 3;
+    private Integer twentyPence = 3;
 
-    @Getter
-    @Setter
-    public Integer fiftyPence = 3;
+    private Integer fiftyPence = 3;
 
-    @Getter
-    @Setter
-    public Integer pounds = 3;
+    private Integer pounds = 3;
 
-    @Getter
-    @Setter
     private Boolean powerMachine = false;
 
-    @Getter
-    @Setter
     private VendingMachineState vendingMachineState = VendingMachineState.OFF;
 
     /**
@@ -75,38 +49,18 @@ public class VendingMachine {
     }
 
     public boolean isOn() {
-        return getPowerMachine();
+        return powerMachine;
     }
 
     public void setOn() {
-        setPowerMachine(true);
-        setVendingMachineState(VendingMachineState.NO_COIN);
+        powerMachine = true;
+        vendingMachineState = VendingMachineState.NO_COIN;
     }
 
     public void setOff() {
-        setPowerMachine(false);
-        setVendingMachineState(VendingMachineState.OFF);
+        powerMachine = false;
+        vendingMachineState = VendingMachineState.OFF;
     }
-
-//    /**
-//     * Main point access  where the user pick up one of the vending machine actions
-//     *
-//     * @param clientAction
-//     * @return
-//     */
-//    public OutputMachine processClientAction(ClientAction clientAction) {
-//        switch (clientAction) {
-//            case INSERT_MONEY:
-//                return insertMoney(clientAction.getCoinType());
-//            case COIN_RETURN:
-//                return returnMoney();
-//            case GET_ITEM:
-//                return selectProduct(new OutputMachine(clientAction.getItem()));
-//            default:
-//                return new OutputMachine("Action not available");
-//        }
-//    }
-
 
 
     /**
@@ -132,8 +86,8 @@ public class VendingMachine {
             default:
                 return new OutputMachine("No coin accepted", coinType.getCoin());
         }
-        getInsertedCoins().push(coinType);
-        setVendingMachineState(VendingMachineState.AVAILABLE_MONEY);
+        insertedCoins.push(coinType);
+        vendingMachineState = VendingMachineState.AVAILABLE_MONEY;
         return new OutputMachine(String.format("Inserted money %s", getTotalClientMoney()));
     }
 
@@ -144,8 +98,8 @@ public class VendingMachine {
      */
     public OutputMachine returnMoney() {
         clientMoney = getTotalClientMoney();
-        while (getInsertedCoins().size() > 0) {
-            CoinType insertedCoin = getInsertedCoins().pop();
+        while (insertedCoins.size() > 0) {
+            CoinType insertedCoin = insertedCoins.pop();
             switch (insertedCoin) {
                 case TEN_PENCE:
                     tenPence--;
@@ -161,19 +115,23 @@ public class VendingMachine {
                     break;
             }
         }
-        setVendingMachineState(VendingMachineState.NO_COIN);
+        vendingMachineState = VendingMachineState.NO_COIN;
         return new OutputMachine(clientMoney);
     }
 
     /**
      * Access to select a product and interact with the sate machine that the vending machine will go through, in order to provide the product
      *
-     * @param outputMachine
+     * @param item
      * @return
      */
-    public OutputMachine selectProduct(OutputMachine outputMachine) {
+    public OutputMachine selectProduct(Item item) {
+        return runStateMachineProcesses(new OutputMachine(item));
+    }
+
+    private OutputMachine runStateMachineProcesses(OutputMachine outputMachine) {
         try {
-            switch (getVendingMachineState()) {
+            switch (vendingMachineState) {
                 case OFF:
                     return outputMachine;
                 case NO_COIN:
@@ -205,12 +163,13 @@ public class VendingMachine {
      */
     private void processAvailableProduct(OutputMachine outputMachine) throws NoProductAvailableException {
         checkAvailableProduct(getItem(outputMachine));
-        setVendingMachineState(VendingMachineState.INSERTED_MONEY);
-        selectProduct(outputMachine);
+        vendingMachineState = VendingMachineState.INSERTED_MONEY;
+        runStateMachineProcesses(outputMachine);
     }
 
     /**
      * Return the item type that the client selected
+     *
      * @param outputMachine
      * @return
      * @throws NoProductAvailableException
@@ -218,11 +177,11 @@ public class VendingMachine {
     private Item getItem(final OutputMachine outputMachine) throws NoProductAvailableException {
         switch (outputMachine.getItem().getItemType()) {
             case PEPSI:
-                return getPepsi();
+                return pepsi;
             case KIT_KAT:
-                return getKitkat();
+                return kitkat;
             case SMINT:
-                return getSmint();
+                return smint;
             default:
                 throw new NoProductAvailableException("No product available");
         }
@@ -245,15 +204,15 @@ public class VendingMachine {
         clientMoney = getTotalClientMoney();
         if (clientMoney.compareTo(outputMachine.getItem().getPrice()) >= 0) {
             loadClientChange(outputMachine);
-            setVendingMachineState(VendingMachineState.AVAILABLE_ITEMS);
-            selectProduct(outputMachine);
+            vendingMachineState = VendingMachineState.AVAILABLE_ITEMS;
+            runStateMachineProcesses(outputMachine);
         } else {
             throw new NoEnoughMoneyException(String.format("No enough money %s", outputMachine.getItem().getPrice()));
         }
     }
 
     private BigDecimal getTotalClientMoney() {
-        return getInsertedCoins().stream().map(CoinType::getCoin).reduce(BigDecimal.ZERO, BigDecimal::add);
+        return insertedCoins.stream().map(CoinType::getCoin).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     private void loadClientChange(OutputMachine outputMachine) throws NoChangeAvailableException {
@@ -263,6 +222,7 @@ public class VendingMachine {
 
     /**
      * Recursive method to extract the client change
+     *
      * @return
      * @throws NoChangeAvailableException
      */
@@ -313,16 +273,16 @@ public class VendingMachine {
     private void processSelectedProduct(final OutputMachine outputMachine) throws NoProductAvailableException, NoChangeAvailableException {
         outputMachine.getItem().setSelected(true);
         reduceItemAmount(getItem(outputMachine));
-        setVendingMachineState(VendingMachineState.PRODUCT_SELECTED);
-        selectProduct(outputMachine);
+        vendingMachineState = VendingMachineState.PRODUCT_SELECTED;
+        runStateMachineProcesses(outputMachine);
     }
 
     /**
      * This method will set the state machine as no coin, and it will clear the client coin stack
      */
     private void resetVendingStateMachine() {
-        getInsertedCoins().clear();
-        setVendingMachineState(VendingMachineState.NO_COIN);
+        insertedCoins.clear();
+        vendingMachineState = VendingMachineState.NO_COIN;
     }
 
     private void reduceItemAmount(Item item) throws NoProductAvailableException {

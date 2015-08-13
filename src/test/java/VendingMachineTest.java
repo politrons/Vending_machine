@@ -47,7 +47,7 @@ public class VendingMachineTest {
         machine.insertMoney(CoinType.TEN_PENCE);
         machine.insertMoney(CoinType.TWENTY_PENCE);
         machine.returnMoney();
-        OutputMachine outputMachine = machine.selectProduct(new OutputMachine(new Smint()));
+        OutputMachine outputMachine = machine.selectProduct(new Smint());
         assertTrue("No enough money 0.60".equals(outputMachine.getScreenMessage()));
 
     }
@@ -59,7 +59,7 @@ public class VendingMachineTest {
         machine.setOn();
         machine.insertMoney(CoinType.POUND);
         machine.insertMoney(CoinType.FIFTY_PENCE);
-        OutputMachine outputMachine = machine.selectProduct(new OutputMachine(new Pepsi()));
+        OutputMachine outputMachine = machine.selectProduct(new Pepsi());
         assertThat(outputMachine.getChange(), is(new BigDecimal("0.50")));
         assertTrue(outputMachine.getItem().getSelected());
     }
@@ -70,7 +70,7 @@ public class VendingMachineTest {
         machine.setOn();
         machine.insertMoney(CoinType.POUND);
         machine.insertMoney(CoinType.POUND);
-        OutputMachine outputMachine = machine.selectProduct(new OutputMachine(new KitKat()));
+        OutputMachine outputMachine = machine.selectProduct(new KitKat());
         assertThat(outputMachine.getChange(), is(new BigDecimal("0.30")));
         assertTrue(outputMachine.getItem().getSelected());
     }
@@ -81,7 +81,7 @@ public class VendingMachineTest {
         machine.setOn();
         machine.insertMoney(CoinType.POUND);
         machine.insertMoney(CoinType.POUND);
-        OutputMachine outputMachine = machine.selectProduct(new OutputMachine(new Smint()));
+        OutputMachine outputMachine = machine.selectProduct(new Smint());
         assertThat(outputMachine.getChange(), is(new BigDecimal("1.40")));
         assertTrue(outputMachine.getItem().getSelected());
     }
@@ -91,7 +91,7 @@ public class VendingMachineTest {
         VendingMachine machine = new VendingMachine();
         machine.setOn();
         machine.insertMoney(CoinType.FIFTY_PENCE);
-        OutputMachine outputMachine = machine.selectProduct(new OutputMachine(new Pepsi()));
+        OutputMachine outputMachine = machine.selectProduct(new Pepsi());
         assertTrue("No enough money 1.00".equals(outputMachine.getScreenMessage()));
     }
 
@@ -101,7 +101,7 @@ public class VendingMachineTest {
         machine.setOn();
         machine.insertMoney(CoinType.POUND);
         machine.insertMoney(CoinType.FIFTY_PENCE);
-        OutputMachine outputMachine = machine.selectProduct(new OutputMachine(new KitKat()));
+        OutputMachine outputMachine = machine.selectProduct(new KitKat());
         assertTrue("No enough money 1.70".equals(outputMachine.getScreenMessage()));
     }
 
@@ -111,7 +111,7 @@ public class VendingMachineTest {
         VendingMachine machine = new VendingMachine();
         machine.setOn();
         machine.insertMoney(CoinType.FIFTY_PENCE);
-        OutputMachine outputMachine = machine.selectProduct(new OutputMachine(new Smint()));
+        OutputMachine outputMachine = machine.selectProduct(new Smint());
         assertTrue("No enough money 0.60".equals(outputMachine.getScreenMessage()));
     }
 
@@ -120,9 +120,9 @@ public class VendingMachineTest {
         VendingMachine machine = new VendingMachine();
         machine.setOn();
         machine.insertMoney(CoinType.FIFTY_PENCE);
-        machine.selectProduct(new OutputMachine(new Pepsi()));
+        machine.selectProduct(new Pepsi());
         machine.insertMoney(CoinType.FIFTY_PENCE);
-        OutputMachine outputMachine = machine.selectProduct(new OutputMachine(new Pepsi()));
+        OutputMachine outputMachine = machine.selectProduct(new Pepsi());
         assertThat(outputMachine.getChange(), is(new BigDecimal("0.0")));
         assertTrue(outputMachine.getItem().getSelected());
     }
@@ -132,9 +132,9 @@ public class VendingMachineTest {
         VendingMachine machine = new VendingMachine();
         machine.setOn();
         machine.insertMoney(CoinType.POUND);
-        machine.selectProduct(new OutputMachine(new Pepsi()));
+        machine.selectProduct(new Pepsi());
         machine.insertMoney(CoinType.POUND);
-        OutputMachine outputMachine = machine.selectProduct(new OutputMachine(new Pepsi()));
+        OutputMachine outputMachine = machine.selectProduct(new Pepsi());
         assertTrue("No product available".equals(outputMachine.getScreenMessage()));
         assertFalse(outputMachine.getItem().getSelected());
     }
@@ -146,11 +146,11 @@ public class VendingMachineTest {
         machine.insertMoney(CoinType.POUND);
         machine.insertMoney(CoinType.FIFTY_PENCE);
         machine.insertMoney(CoinType.TWENTY_PENCE);
-        machine.selectProduct(new OutputMachine(new KitKat()));
+        machine.selectProduct(new KitKat());
         machine.insertMoney(CoinType.POUND);
         machine.insertMoney(CoinType.FIFTY_PENCE);
         machine.insertMoney(CoinType.TWENTY_PENCE);
-        OutputMachine outputMachine = machine.selectProduct(new OutputMachine(new KitKat()));
+        OutputMachine outputMachine = machine.selectProduct(new KitKat());
         assertTrue("No product available".equals(outputMachine.getScreenMessage()));
         assertFalse(outputMachine.getItem().getSelected());
     }
@@ -161,10 +161,10 @@ public class VendingMachineTest {
         machine.setOn();
         machine.insertMoney(CoinType.FIFTY_PENCE);
         machine.insertMoney(CoinType.TEN_PENCE);
-        machine.selectProduct(new OutputMachine(new Smint()));
+        machine.selectProduct(new Smint());
         machine.insertMoney(CoinType.FIFTY_PENCE);
         machine.insertMoney(CoinType.TEN_PENCE);
-        OutputMachine outputMachine = machine.selectProduct(new OutputMachine(new Smint()));
+        OutputMachine outputMachine = machine.selectProduct(new Smint());
         assertTrue("No product available".equals(outputMachine.getScreenMessage()));
         assertFalse(outputMachine.getItem().getSelected());
     }
@@ -174,11 +174,11 @@ public class VendingMachineTest {
         VendingMachine machine = new VendingMachine();
         machine.setOn();
         machine.insertMoney(CoinType.POUND);
-        machine.selectProduct(new OutputMachine(new Pepsi()));
+        machine.selectProduct(new Pepsi());
         machine.insertMoney(CoinType.POUND);
-        OutputMachine outputMachine = machine.selectProduct(new OutputMachine(new Pepsi()));
+        OutputMachine outputMachine = machine.selectProduct(new Pepsi());
         assertTrue("No product available".equals(outputMachine.getScreenMessage()));
-        outputMachine = machine.selectProduct(new OutputMachine(new Smint()));
+        outputMachine = machine.selectProduct(new Smint());
         assertThat(outputMachine.getChange(), is(new BigDecimal("0.40")));
         assertTrue(outputMachine.getItem().getSelected());
     }
